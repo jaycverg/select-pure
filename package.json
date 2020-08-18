@@ -1,12 +1,15 @@
 {
-  "name": "select-pure",
+  "name": "@jaycverg/select-pure",
   "version": "0.6.0-alpha.0",
-  "description": "Pure JavaScript select component.",
+  "description": "This is a fork of 'Pure JavaScript select component'.",
   "author": {
     "name": "Maksym Dudynskyi",
     "email": "hello@dudynskyi.com",
     "url": "https://github.com/dudyn5ky1"
   },
+  "contributors": [
+    "Jayrome Vergara <jaycverg@gmail.com> (https://github.com/jaycverg/select-pure)"
+  ],
   "keywords": [
     "javascript",
     "select",

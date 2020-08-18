@@ -176,6 +176,15 @@ class SelectPure {
       }
       this._selectOptions(options, manual);
 
+      if (this._autocomplete && this._config.resetSearchOnSelect) {
+        this._autocomplete.get().value = "";
+        const event = new Event("input", {
+          bubbles: true,
+          cancelable: true,
+        });
+        this._autocomplete.get().dispatchEvent(event);
+      }
+
       return;
     }
 
@@ -252,12 +261,21 @@ class SelectPure {
 
   _sortOptions(event) {
     this._options.forEach(_option => {
-      if (!_option.get().textContent.toLowerCase().startsWith(event.target.value.toLowerCase())) {
+      const searchKey = event.target.value.toLowerCase();
+      const optionText = _option.get().textContent.toLowerCase();
+      if (!this._searchFilter(searchKey, optionText)) {
         _option.addClass(this._config.classNames.optionHidden);
         return;
       }
       _option.removeClass(this._config.classNames.optionHidden);
     });
+  }
+
+  _searchFilter(searchKey, optionText) {
+    if (this._config.searchFilter) {
+      return this._config.searchFilter(searchKey, optionText);
+    }
+    return optionText.startsWith(searchKey);
   }
 }
 
