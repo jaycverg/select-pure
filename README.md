@@ -12,24 +12,19 @@
 #### NPM
 
 ```
-npm i select-pure --save
+npm i @jaycverg/select-pure --save
 ```
 
 #### Yarn
 
 ```
-yarn add select-pure
+yarn add @jaycverg/select-pure
 ```
 
-#### CDN
-
-```
-<script src="https://unpkg.com/select-pure@latest/dist/bundle.min.js"></script>
-```
 ## Usage
 
 ```javascript
-import SelectPure from "select-pure";
+import SelectPure from "@jaycverg/select-pure";
 
 new SelectPure(element, config);
 
@@ -45,11 +40,13 @@ new SelectPure(element, config);
 | [classNames](#classNames) | false | Object | Object with custom classNames to be used inside select. In the next major version default classNames will be removed and this property will become required. |
 | multiple | false | Boolean | `true` if multiple options can be selected. |
 | autocomplete | false | Boolean | Adds autocomplete input. Disabled by default. |
+| resetSearchOnSelect | false | Boolean | If `true`, search input text will be cleared on option selection. This only takes effect if `autocomplete` is `true`. |
 | icon | false | String | If specified - `<i></i>` will be inserted inside `select-pure__selected-label`. Works only with `multiple` option set to `true`. |
 | inlineIcon | false | HMTLElement | Custom cross icon for multiple select. |
 | value | false | String \| Array | Initially selected value. If not provided - first option will be selected. If `multiple` is `true` -- `Array` should be provided. |
 | placeholder | false | String | Placeholder for cases when value is not selected by default. |
 | onChange | false | Function | Callback that returns value when option is being selected. Returns `Array` if `multiple` is `true`. |
+| searchFilter | false | Function | Callback that handles filtering of items. This only takes effect if `autocomplete` is `true`. Function signature: `(searchKey, optionText) => boolean`. |
 
 #### option
 
